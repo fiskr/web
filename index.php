@@ -1,22 +1,16 @@
 <!DOCTYPE html>
   <head>
-    <link href="./css/markdown.css"/>
+    <title>Nothing</title>
+    <link href="./css/markdown.css" rel="stylesheet"/>
     <link href="img/apple-favicon.png" rel="shortcut icon" />
   </head>
-  <body>
-    <h1> HELLO WORLD </h1>
-    <?php
-      echo 'whoa'
-    ?>
-    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-    <!-- SPEAK -->
-    <ins class="adsbygoogle"
-         style="display:inline-block;width:300px;height:250px"
-         data-ad-client="ca-pub-7685740874128456"
-         data-ad-slot="4872128524"></ins>
-    <script>
-    (adsbygoogle = window.adsbygoogle || []).push({});
-    </script>
+  <body> 
+    <iframe frameBorder="0" scrolling="no" style="width: 100vw; height: 750px; position: absolute; top: 0; left: 0;" src="./google-ad.html"></iframe>
+    <div class="main-content">
+      <!-- <h1> WHA? </h1> -->
+      <blockquote> This is not for you. </blockquote>
+      <p> - <i>House of Leaves</i>, Mark Z. Danielewski </p>
+    </div> <!-- end of main content -->
   </body>
-
 </html>
+
