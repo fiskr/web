@@ -1,0 +1,122 @@
+<p><link href="css/markdown.css" rel="stylesheet"></link></p>
+
+<h1>Notes</h1>
+
+<h2>Debian 8 LXDE Notes</h2>
+
+<h3>Keyboard Shortcuts</h3>
+
+<p>2015-09-18</p>
+
+<p>See more info: http://openbox.org/wiki/Help:Bindings#Modifiers</p>
+
+<blockquote>
+  <p>You can find the name of any key by using the <code>xev</code> command in a terminal, pressing the desired key, and watching the output from <code>xev</code> in the terminal. </p>
+</blockquote>
+
+<p>Use <code>openbox --reconfigure</code> to make your changes present.</p>
+
+<h4>Screenlock</h4>
+
+<p>Added to <code>~/.config/openbox/lxde-rc.xml</code>:
+<code>
+    &lt;!-- 20150918 adding ability to screenlock from keyboard --&gt;
+    &lt;keybind key="W-Escape"&gt; <br />
+      &lt;action name="Execute"&gt; <br />
+        &lt;command&gt;xscreensaver-command -lock&lt;/command&gt; <br />
+      &lt;/action&gt; <br />
+    &lt;/keybind&gt;
+</code></p>
+
+<h4>Screenshot</h4>
+
+<p>I have a script named <code>screenshot.sh</code> that does this:
+<code>scrot -s ~/Pictures/Screenshots/$(date +%Y%m%d_%H-%M-%S).png</code>
+(Essentially it uses scrot to take a screenshot and saves the file under Pictures/Screenshots, with a timestamp in the name.)</p>
+
+<p>I added to <code>~/.config/openbox/lxde-rc.xml</code>:</p>
+
+<p><code>
+  &lt;!-- 20150923 selection-based screenshot keyboard shortcut --&gt;
+  &lt;keybind key="W-grave"&gt; <br />
+    &lt;action name="Execute"&gt; <br />
+      &lt;command&gt;bash /home/serotonin/scripts/screenshot.sh&lt;/command&gt;
+    &lt;/action&gt;
+  &lt;/keybind&gt;
+</code></p>
+
+<p>This binds the super key and grave character (`) to the screenshot function.
+(The "super key" is the Windows key on Windows, Command key on Mac, see more <a href="https://en.wikipedia.org/wiki/Super_key_%28keyboard_button%29">here</a> )</p>
+
+<h4>Window Tiling Snap (Spectacle-like features)</h4>
+
+<p>Added to <code>~/.config/openbox/lxde-rc.xml</code>:</p>
+
+<p><code>
+    &lt;!-- 20150928 Keybindings for window tiling with the keypad --&gt;
+    &lt;keybind key="W-f"&gt;
+      &lt;action name="UnmaximizeFull"/&gt;
+      &lt;action name="MoveResizeTo"&gt;
+        &lt;x&gt;0&lt;/x&gt;
+        &lt;y&gt;0&lt;/y&gt;
+        &lt;width&gt;100%&lt;/width&gt;
+        &lt;height&gt;100%&lt;/height&gt;
+      &lt;/action&gt;
+    &lt;/keybind&gt;
+    &lt;keybind key="W-Left"&gt;
+      &lt;action name="UnmaximizeFull"/&gt;
+      &lt;action name="MoveResizeTo"&gt;
+        &lt;x&gt;0&lt;/x&gt;
+        &lt;y&gt;0&lt;/y&gt;
+        &lt;height&gt;100%&lt;/height&gt;
+        &lt;width&gt;50%&lt;/width&gt;
+      &lt;/action&gt;
+    &lt;/keybind&gt;
+    &lt;keybind key="W-Right"&gt;
+      &lt;action name="UnmaximizeFull"/&gt;
+      &lt;action name="MoveResizeTo"&gt;
+        &lt;x&gt;-0&lt;/x&gt;
+        &lt;y&gt;0&lt;/y&gt;
+        &lt;height&gt;100%&lt;/height&gt;
+        &lt;width&gt;50%&lt;/width&gt;
+      &lt;/action&gt;
+    &lt;/keybind&gt;
+    &lt;keybind key="W-Up"&gt;
+      &lt;action name="UnmaximizeFull"/&gt;
+      &lt;action name="MoveResizeTo"&gt;
+        &lt;x&gt;0&lt;/x&gt;
+        &lt;y&gt;0&lt;/y&gt;
+        &lt;width&gt;100%&lt;/width&gt;
+        &lt;height&gt;50%&lt;/height&gt;
+      &lt;/action&gt;
+    &lt;/keybind&gt;
+    &lt;keybind key="W-Down"&gt;
+      &lt;action name="UnmaximizeFull"/&gt;
+      &lt;action name="MoveResizeTo"&gt;
+        &lt;x&gt;0&lt;/x&gt;
+        &lt;y&gt;-0&lt;/y&gt;
+        &lt;width&gt;100%&lt;/width&gt;
+        &lt;height&gt;50%&lt;/height&gt;
+      &lt;/action&gt;
+    &lt;/keybind&gt;
+</code></p>
+
+<h4>Autostart Terminal on LXDE startup</h4>
+
+<p>Added to <code>~/.config/lxsession/LXDE/autostart</code>
+<code>
+@lxterminal
+</code></p>
+
+<h4>Change Default Editor to VIM (from Nano)</h4>
+
+<p><code>update-alternatives --config editor</code>
+Then press the number corresponding to the editor you wish to use.</p>
+
+<h4>Change Wallpaper from Terminal in LXDE</h4>
+
+<p>Use feh to change background:
+<code># apt-get install feh</code></p>
+
+<p>Change background with feh:
+<code>feh --bg-scale /path/to/image.png</code></p>
